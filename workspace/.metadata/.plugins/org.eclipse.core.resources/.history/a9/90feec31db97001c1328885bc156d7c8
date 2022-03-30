@@ -1,0 +1,209 @@
+package objectrepository;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class CreateGene {
+	
+	WebDriver driver;
+
+	public CreateGene(WebDriver driver) {
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
+	}
+	@FindBy(xpath="//span[contains(text(),'P/G/V')]")
+	WebElement PGVheader;
+	
+	@FindBy(xpath="//body/div[2]/div[6]/div[1]/div[1]/a[1]/div[1]/div[1]/img[1]")
+	WebElement PGVtile;
+	
+	@FindBy(name="geneName")
+	WebElement GeneName;
+	
+	@FindBy(name="is_visible")
+	WebElement GeneVisibility;
+	
+	@FindBy(id="btnSaveGene")
+	WebElement SaveButton;
+	
+	@FindBy(xpath="//body/div[@id='siteModal']/div[1]/div[1]/div[1]/div[1]/button[1]/img[1]")
+	WebElement GenePopUpClose;
+	
+	@FindBy(id="snpName")
+	WebElement SnpName;
+	
+	@FindBy(id="snpComments")
+	WebElement SnpComment;
+	
+	@FindBy(id="snpShortDescription")
+	WebElement SnpDescription;
+	
+	@FindBy(name="is_visible")
+	WebElement SnpVisibility;
+	
+	@FindBy(id="variantName1")
+	WebElement Varient1;
+	
+	@FindBy(id="variantQualifier1")
+	WebElement Qualifier1;
+	
+	@FindBy(id="variantDescription1")
+	WebElement Vdescription1;
+	
+	@FindBy(id="shortComment1")
+	WebElement ShortComment1;
+	
+	@FindBy(id="variantName2")
+	WebElement Varient2;
+	
+	@FindBy(id="variantQualifier2")
+	WebElement Qualifier2;
+	
+	@FindBy(id="variantDescription2")
+	WebElement Vdescription2;
+	
+	@FindBy(id="shortComment2")
+	WebElement ShortComment2;
+	
+	@FindBy(id="variantName3")
+	WebElement Varient3;
+	
+	@FindBy(id="variantQualifier3")
+	WebElement Qualifier3;
+	
+	@FindBy(id="variantDescription3")
+	WebElement Vdescription3;
+	
+	@FindBy(id="shortComment3")
+	WebElement ShortComment3;
+	
+	@FindBy(id="btnSaveSnpAndVariants")
+	WebElement SaveSnp;
+	
+	@FindBy(xpath="//body/div[@id='siteModal']/div[1]/div[1]/div[1]/div[1]/button[1]/img[1]")
+	WebElement SnpPopUp;
+	
+	@FindBy(id="reference")
+	WebElement Reference;
+	
+	@FindBy(id="weblink")
+	WebElement WebLink;
+	
+	@FindBy(id="btnSaveReference")
+	WebElement SaveReference;
+	
+	
+
+	
+	public WebElement PGVmodule()
+	{
+		return PGVheader;
+	}
+	public WebElement PGVimage()
+	{
+		return PGVtile;
+	}
+	public WebElement Gene()
+	{
+		return GeneName;
+	}
+	public WebElement GVisibility()
+	{
+		return GeneVisibility;
+	}
+	public WebElement Save()
+	{
+		return SaveButton;
+	}
+	public WebElement GenePopUp()
+	{
+		return GenePopUpClose;
+	}
+	public WebElement SnpName()
+	{
+		return SnpName;
+	}
+	public WebElement SnpComment()
+	{
+		return SnpComment;
+	}
+	public WebElement SnpDesc()
+	{
+		return SnpDescription;
+	}
+	public WebElement SnpVisibility()
+	{
+		return SnpVisibility;
+	}
+	public WebElement Varient1()
+	{
+		return Varient1;
+	}
+	public WebElement VQualifier1()
+	{
+		return Qualifier1;
+	}
+	public WebElement VDesc1()
+	{
+		return Vdescription1;
+	}
+	public WebElement VShortComment1()
+	{
+		return ShortComment1;
+	}
+	public WebElement Varient2()
+	{
+		return Varient2;
+	}
+	public WebElement VQualifier2()
+	{
+		return Qualifier2;
+	}
+	public WebElement VDesc2()
+	{
+		return Vdescription2;
+	}
+	public WebElement VShortComment2()
+	{
+		return ShortComment2;
+	}
+	public WebElement Varient3()
+	{
+		return Varient3;
+	}
+	public WebElement VQualifier3()
+	{
+		return Qualifier3;
+	}
+	public WebElement VDesc3()
+	{
+		return Vdescription3;
+	}
+	public WebElement VShortComment3()
+	{
+		return ShortComment3;
+	}
+	public WebElement SaveSNP()
+	{
+		return SaveSnp;
+	}
+	public WebElement SNPPopUp()
+	{
+		return SnpPopUp;
+	}
+	public WebElement Reference()
+	{
+		return Reference;
+	}
+	public WebElement Weblink()
+	{
+		return WebLink;
+	}
+	public WebElement SaveReference()
+	{
+		return SaveReference;
+	}
+	
+	}

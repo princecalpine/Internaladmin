@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Sapphiros]">
+  <test name="Internal admin(failed)">
+    <classes>
+      <class name="covidconsole.NormalRegistrationTest">
+        <methods>
+          <include name="NormalRegistration"/>
+        </methods>
+      </class> <!-- covidconsole.NormalRegistrationTest -->
+      <class name="covidconsole.CovidLoginTest">
+        <methods>
+          <include name="basePageNavigation"/>
+        </methods>
+      </class> <!-- covidconsole.CovidLoginTest -->
+    </classes>
+  </test> <!-- Internal admin(failed) -->
+</suite> <!-- Failed suite [Sapphiros] -->

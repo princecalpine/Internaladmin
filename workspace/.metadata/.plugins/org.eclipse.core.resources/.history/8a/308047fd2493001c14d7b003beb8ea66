@@ -1,0 +1,26 @@
+package testcases;
+
+import java.io.IOException;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+import SapphirosProject.baseclass;
+import objectrepository.InternalLoginpage;
+
+public class Login extends baseclass {
+	@Test
+    public void Login(String urlname) throws IOException
+	{
+	driver=InitilizeDriver();
+	driver.get("https://preproduction.telomerediagnostics.com/internal");
+	InternalLoginpage Lo=new InternalLoginpage(driver);
+	Lo.EmailId().sendKeys("prince.cl@calpinetech.com");
+	Lo.Password().sendKeys("calpine123");
+	Lo.Submit().click();
+	
+	
+}
+	}
