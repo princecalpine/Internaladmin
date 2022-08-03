@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-06-21T11:54:58 IST" name="Sapphiros" finished-at="2022-06-21T11:56:31 IST" duration-ms="92850">
+    <groups>
+    </groups>
+    <test started-at="2022-06-21T11:54:58 IST" name="Internal admin" finished-at="2022-06-21T11:56:31 IST" duration-ms="92850">
+      <class name="internaladmin.Logintest">
+        <test-method signature="basePageNavigation()[pri:0, instance:internaladmin.Logintest@60f7cc1d]" started-at="2022-06-21T11:54:58 IST" name="basePageNavigation" finished-at="2022-06-21T11:55:48 IST" duration-ms="49544" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- basePageNavigation -->
+      </class> <!-- internaladmin.Logintest -->
+      <class name="internaladmin.CreateGeneTest">
+        <test-method signature="CreateGene()[pri:0, instance:internaladmin.CreateGeneTest@6bb75258]" started-at="2022-06-21T11:55:48 IST" name="CreateGene" finished-at="2022-06-21T11:56:31 IST" duration-ms="43148" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CreateGene -->
+      </class> <!-- internaladmin.CreateGeneTest -->
+    </test> <!-- Internal admin -->
+  </suite> <!-- Sapphiros -->
+</testng-results>

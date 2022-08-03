@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Test Automation Test Suite]">
+  <test name="Functional Testing(failed)">
+    <parameter name="platformVersion" value=""/>
+    <parameter name="browserVersion" value=""/>
+    <parameter name="browserName" value="chrome"/>
+    <parameter name="nodeIP" value=""/>
+    <parameter name="platformName" value=""/>
+    <parameter name="udid" value=""/>
+    <parameter name="deviceName" value=""/>
+    <parameter name="nodePort" value=""/>
+    <classes>
+      <class name="internaladmin.CreateGeneTest">
+        <methods>
+          <include name="CreateGene"/>
+          <include name="basePageNavigation"/>
+        </methods>
+      </class> <!-- internaladmin.CreateGeneTest -->
+    </classes>
+  </test> <!-- Functional Testing(failed) -->
+</suite> <!-- Failed suite [Test Automation Test Suite] -->
