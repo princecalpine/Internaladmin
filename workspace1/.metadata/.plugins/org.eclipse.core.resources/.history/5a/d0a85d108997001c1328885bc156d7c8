@@ -1,0 +1,141 @@
+
+package com.internal.base;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeDriverService;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxDriverLogLevel;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.GeckoDriverService;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerDriverService;
+import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.safari.SafariOptions;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Parameters;
+
+import com.internal.automationreport.AutomationReport;
+import com.internal.sanity.pages.LoginSanityPage;
+import com.internal.util.StringConstants;
+import com.internal.util.TestUtil;
+
+@Listeners(AutomationReport.class)
+public class TestBase {
+
+	public static  WebDriver driver = null;
+	public static final String TESTDATAEXCEL = "src/main/resources/testdata/InternalTestdata.xlsx";
+	static TestUtil testutil = new TestUtil();
+	public static final String COVIDTESTDATAEXCEL = "src/main/resources/testdata/CovidTestdata.xlsx";
+	public static final String COVIDTESTDATAEXCEL2 = "src/main/resources/testdata/registration_a.xlsx";
+	
+	public static final String PRDTSCRIPTVERSIONURL ="https://stage4.seaportdx.com//api/v1/product/upgrade/?product_id=";
+	//public static final String PRDTSCRIPTVERSIONURL ="https://stage.telomerediagnostics.com/api/v1/product/upgrade/?product_id=";
+	LoginSanityPage loginPage ;
+	@BeforeClass(alwaysRun = true)
+	@Parameters({ "platformVersion", "udid", "browserName", "browserVersion","groupname" })
+	public void setUp(String platformVersion, String udid, String browserName, String browserVersion,String groupname) {
+
+		if (driver == null) {
+			 getInstance(browserName);
+			
+			driver.manage().window().maximize();
+
+			//driver.get("https://telopreproduction.orig3n.com/internal/");
+			//driver.get("https://stage.telomerediagnostics.com/internal/");
+				driver.get("https://stage4.seaportdx.com/internal/");
+		} else {
+
+			
+			driver.manage().window().maximize();
+			//driver.get("https://telopreproduction.orig3n.com/internal/admin/");
+			//driver.get("https://stage.telomerediagnostics.com/internal/admin/");
+			//driver.get("https://lpstage.telomerediagnostics.com/internal/admin/");
+		driver.get("https://stage4.seaportdx.com/internal/admin/");
+		}
+		
+//		if(groupname.equalsIgnoreCase("covidautomation")) {
+//			loginPage= new LoginSanityPage();
+//			loginPage.login(driver);
+//		}
+
+	}
+
+	public static WebDriver getInstance(String browserName) {
+		try {
+			if (browserName == null || browserName.equals("")) {
+
+				System.exit(0);
+			}
+			if (browserName.equalsIgnoreCase(("firefox"))) {
+				FirefoxOptions options = new FirefoxOptions();
+				options.addArguments("--test-type");
+				options.setLogLevel(FirefoxDriverLogLevel.DEBUG);
+				GeckoDriverService geckodriverservice = new GeckoDriverService.Builder()
+						.usingDriverExecutable(new File("")).usingAnyFreePort().build();
+				driver = new FirefoxDriver(geckodriverservice, options);
+			} else if (browserName.equalsIgnoreCase(("chrome"))) {
+				String chromeDriver = testutil.getProperty(StringConstants.CONFIG_PROPERTY_FILE,
+						StringConstants.CHROME_DRIVER_PATH);
+
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("--test-type");
+				Map<String, Object> prefs = new HashMap<>();
+				prefs.put("credentials_enable_service", false);
+				prefs.put("profile.password_manager_enabled", false);
+				options.setExperimentalOption("prefs", prefs);
+				
+
+				ChromeDriverService chromeservices = new ChromeDriverService.Builder()
+						.usingDriverExecutable(new File(chromeDriver)).usingAnyFreePort().build();
+				driver = new ChromeDriver(chromeservices, options);
+
+			} else if (browserName.equalsIgnoreCase(("IE")) || browserName.equalsIgnoreCase("Internet Explorer")) {
+				InternetExplorerDriverService service = new InternetExplorerDriverService.Builder()
+						.usingDriverExecutable(new File("")).usingAnyFreePort().build();
+				driver = new InternetExplorerDriver(service);
+
+			} else if (browserName.equalsIgnoreCase(("Safari"))) {
+				String operatingSystemcheck = System.getProperty("os.name");
+				if (operatingSystemcheck.contains("MAC")) {
+					Process process;
+					process = Runtime.getRuntime().exec("killall safaridriver");
+					process.waitFor();
+					process.destroy();
+
+					SafariOptions options = new SafariOptions();
+					options.useCleanSession(true);
+					driver = new SafariDriver(options);
+					driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+				}
+			} else if (browserName.equalsIgnoreCase(("Edge"))) {
+				EdgeDriverService edgeservice = new EdgeDriverService.Builder().usingDriverExecutable(new File(""))
+						.build();
+				driver = new EdgeDriver(edgeservice);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return driver;
+
+	}
+
+	@AfterSuite(alwaysRun = true)
+	public void tearAfter() {
+	//	driver.quit();
+	}
+
+}

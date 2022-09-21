@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Internal Automation Test Suite">
+	<test name="Internal Admin Sanity Automation">
+
+		<parameter name="platformVersion" value="" />
+		<parameter name="udid" value="" />
+		<parameter name="browserName" value="chrome" />
+		<parameter name="browserVersion" value="" />
+		<parameter name="groupname" value="covidautomation" />
+		<groups>
+			<run>
+				 <!-- <include name="sanityautomation"/> -->
+				      
+				         <!--    <include name="covidautomation"/>    -->
+				    <!--   <include name="covidpagination"/>     -->
+				       <!-- For running  covidinstautomation need to turn off the VPN -->
+			     <!-- <include name="covidinstautomation"/>    -->
+				<!--  <include name="sanitycovidautomation"/>  -->
+			 <include name="fullAutomation" />  
+			</run>
+		</groups>
+
+		<classes>
+	
+	<class name="com.qa.testcase.sanitytest.ExtractSwabSanityTest" /> 
+
+	 	  <class name="com.qa.testcase.sanitytest.InventorySanityTest" />     
+		
+		 <class name="com.qa.testcase.selfregconsoletest.SelfRegInstCovidConsoleTest"/> 
+		  <class name="com.qa.testcase.selfregconsoletest.SelfRegSubInstCovidConsoleTest"/>  
+		     <class name="com.qa.testcase.selfregconsoletest.SelfRegInstSecCovidConsoleTest"/>
+		 
+		   <class name="com.qa.testcase.selfregconsoletest.SelfRegSecSubInstCovidConsoleTest"/>   
+		   
+		      <class name="com.qa.testcase.covidconsoleinst.CovidInstRegistrationTest"/>     
+		   <class name="com.qa.testcase.covidconsoleinst.CovidSubInstRegistrationTest"/>   
+		  
+	
+			<class name="com.qa.testcase.sanitytest.PGVCreateProductSanityTest" />	 
+		   <class name="com.qa.testcase.covidconsoletest.CovidRegistrationSanityTest"/>  
+		   
+		   <class name="com.qa.testcase.sanitytest.ReceiveSwabSanityTest" /> 			
+			
+
+		  <class name="com.qa.testcase.sanitytest.PGVCreateGeneSanityTest" />
+			<class name="com.qa.testcase.sanitytest.PGVCreateCategorySanityTest" />
+			<class name="com.qa.testcase.sanitytest.PGVCreateInAppSanityTest" />
+			<class name="com.qa.testcase.sanitytest.LogicalCreateSanityTest" />
+
+			<class name="com.qa.testcase.sanitytest.WorkingVialSanityTest" />    
+			
+				
+			<class name="com.qa.testcase.sanitytest.ExtractSwabSanityTest" /> 
+			
+			   <class name="com.qa.testcase.sanitytest.RequsitionFormTest" />
+			<class name="com.qa.testcase.sanitytest.GPlateTest" /> 
+
+		 	
+			<class name="com.qa.testcase.sanitytest.CustomerExportCSVSanityTest" />
+			
+			<class name="com.qa.testcase.sanitytest.CustomerSanityTest" />
+			<class name="com.qa.testcase.sanitytest.PGVPRoductVersioningTest" />
+			
+	
+		 	<class name="com.qa.testcase.sanitytest.DamageSampleTest" /> 
+			<class name="com.qa.testcase.sanitytest.ReportSanityTest" />  
+			
+		 	<class name="com.qa.testcase.sanitytest.CustomerInfoSanityTest" />
+		
+			<class name="com.qa.testcase.sanitytest.KPlatePoolingSanityTest" />  
+
+		 <!--   <class name="com.qa.testcase.sanitytest.ProductAddonSanityTest" /> -->
+
+			 <class name="com.qa.testcase.covidconsoleinst.CovidVerifyReportInstTest"/>  
+			
+			 <class name="com.qa.testcase.covidconsoletest.CovidVerifyReportSanityTest" /> 
+			
+			  <class name="com.qa.testcase.covidconsoletest.CovidReportTest"/> 
+			 
+			  <class name="com.qa.testcase.covidconsoleinst.AccountInstTest"/>  
+			
+			 
+			<class name="com.qa.testcase.sanitytest.ViewExistingReportSanityTest" />
+			<class name="com.qa.testcase.sanitytest.NoampTest" /> 
+		  	<class name="com.qa.testcase.sanitytest.ViewPartialReportSanityTest" />   
+
+ 			 <!--  <class name="com.qa.testcase.sanitytest.LabTechUserTest" />
+ 			<class name="com.qa.testcase.sanitytest.LabTechUserEditTest" />  -->
+ 			
+ 			
+ 			<class name="com.qa.testcase.covidconsoletest.CancelRejectReportTest" /> 
+ 			
+ 			<class name="com.qa.testcase.covidconsoletest.DownloadPatientRecordTest" />  
+ 				
+ 			<class name="com.qa.testcase.covidconsoletest.VerifyCancelRejectReportTest" /> 
+ 			
+			<class name="com.qa.testcase.sanitytest.DeletePGVSanityTest" />   
+			  <class name="com.qa.testcase.sanitytest.AppAdminSanityTest" />   
+		 
+			   
+	
+		</classes>
+	</test>
+
+</suite> 	

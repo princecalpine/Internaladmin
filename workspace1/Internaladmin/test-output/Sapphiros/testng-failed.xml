@@ -3,16 +3,11 @@
 <suite name="Failed suite [Sapphiros]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Internal admin(failed)">
     <classes>
-      <class name="internaladmin.CreateGeneTest">
+      <class name="internaladmin.CreateInternalUserTest">
         <methods>
-          <include name="CreateGene"/>
+          <include name="CreateCategory"/>
         </methods>
-      </class> <!-- internaladmin.CreateGeneTest -->
-      <class name="internaladmin.Logintest">
-        <methods>
-          <include name="basePageNavigation"/>
-        </methods>
-      </class> <!-- internaladmin.Logintest -->
+      </class> <!-- internaladmin.CreateInternalUserTest -->
     </classes>
   </test> <!-- Internal admin(failed) -->
 </suite> <!-- Failed suite [Sapphiros] -->

@@ -1,0 +1,395 @@
+package com.internal.pages.selfregcovid;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertThrows;
+import static org.testng.Assert.assertTrue;
+
+import java.io.File;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import com.internal.base.SelfRegCovidTestBase;
+import com.internal.base.SelfRegSecSubInstCovidTestBase;
+import com.internal.base.SelfRegSubInstCovidTestBase;
+import com.internal.common.WaitCommon;
+import com.internal.datahandler.ExcelDataHandler;
+import com.internal.objectrepository.InventoryPageObjects;
+import com.internal.objectrepository.selfregcovid.SelfRegConsoleObjects;
+
+import com.sun.tools.javac.util.List;
+
+public class SelfRegSecSubInstCovidConsolePage extends SelfRegSecSubInstCovidTestBase {
+
+	ExcelDataHandler covidData = new ExcelDataHandler();
+
+	
+	/*
+	 * Author:Sharmila patientRegisterSelfRegSecConsoleSubInst TCID: Automation ID :
+	 * 
+	 */
+	public void patientRegisterSelfRegSecConsoleSubInst() throws InterruptedException {
+
+		String fname = covidData.getCellData(COVIDTESTDATAEXCEL, SelfRegConsoleObjects.REGISTER, 75, 1);
+		String lname = covidData.getCellData(COVIDTESTDATAEXCEL, SelfRegConsoleObjects.REGISTER, 75, 2);
+		String city = covidData.getCellData(COVIDTESTDATAEXCEL, SelfRegConsoleObjects.REGISTER, 75, 20);
+		String street = covidData.getCellData(COVIDTESTDATAEXCEL, SelfRegConsoleObjects.REGISTER, 75, 17);
+		String phone = covidData.getCellData(COVIDTESTDATAEXCEL, SelfRegConsoleObjects.REGISTER, 75, 13);
+		String email = covidData.getCellData(COVIDTESTDATAEXCEL, SelfRegConsoleObjects.REGISTER, 75, 3);
+		String zipcode = covidData.getCellData(COVIDTESTDATAEXCEL, SelfRegConsoleObjects.REGISTER, 75, 19);
+		
+		String memID = covidData.getCellData(COVIDTESTDATAEXCEL, SelfRegConsoleObjects.REGISTER, 75, 21);
+		String groupNo = covidData.getCellData(COVIDTESTDATAEXCEL, SelfRegConsoleObjects.REGISTER, 75, 22);
+		String insurName = covidData.getCellData(COVIDTESTDATAEXCEL, SelfRegConsoleObjects.REGISTER, 75, 23);
+		String otherinsr = covidData.getCellData(COVIDTESTDATAEXCEL, SelfRegConsoleObjects.REGISTER, 75, 25);
+
+		String secstreet = covidData.getCellData(COVIDTESTDATAEXCEL, SelfRegConsoleObjects.REGISTER, 75, 44);
+		String seccity = covidData.getCellData(COVIDTESTDATAEXCEL, SelfRegConsoleObjects.REGISTER, 75, 45);
+		String seczip = covidData.getCellData(COVIDTESTDATAEXCEL, SelfRegConsoleObjects.REGISTER, 75, 47);
+		
+		assertEquals(driver.findElement(By.xpath(SelfRegConsoleObjects.INSTNAME_XPATH)).getText(),"Calpine SubAuto Hosp2");
+		WaitCommon.waitForElementVisible(driver, By.id(SelfRegConsoleObjects.FNAME_ID));
+		driver.findElement(By.id(SelfRegConsoleObjects.FNAME_ID)).clear();
+		driver.findElement(By.id(SelfRegConsoleObjects.FNAME_ID)).sendKeys(fname);
+
+		WaitCommon.sleep(2000);
+
+		WaitCommon.waitForElementVisible(driver, By.id(SelfRegConsoleObjects.LNAME_ID));
+		driver.findElement(By.id(SelfRegConsoleObjects.LNAME_ID)).clear();
+		driver.findElement(By.id(SelfRegConsoleObjects.LNAME_ID)).sendKeys(lname);
+
+		WaitCommon.sleep(2000);
+
+		boolean disabled = (boolean) ((JavascriptExecutor) driver).executeScript("return arguments[0].hasAttribute(\"disabled\");", driver.findElement(By.xpath(SelfRegConsoleObjects.BTNNEXT_XPATH)));
+		assertTrue(disabled);
+		
+		WaitCommon.waitForElementVisible(driver, By.id(SelfRegConsoleObjects.DOB_ID));
+		driver.findElement(By.id(SelfRegConsoleObjects.DOB_ID)).clear();
+		((JavascriptExecutor) driver).executeScript("arguments[0].removeAttribute('readonly','readonly')", driver.findElement(By.id(SelfRegConsoleObjects.DOB_ID)));
+		driver.findElement(By.id(SelfRegConsoleObjects.DOB_ID)).sendKeys("06/10/1990");
+	
+
+		WaitCommon.sleep(2000);
+
+		WaitCommon.waitForElementVisible(driver, By.id(SelfRegConsoleObjects.CITY_ID));
+		driver.findElement(By.id(SelfRegConsoleObjects.CITY_ID)).clear();
+		driver.findElement(By.id(SelfRegConsoleObjects.CITY_ID)).sendKeys(city);
+
+		WaitCommon.sleep(2000);
+
+	
+		disabled = (boolean) ((JavascriptExecutor) driver).executeScript("return arguments[0].hasAttribute(\"disabled\");", driver.findElement(By.xpath(SelfRegConsoleObjects.BTNNEXT_XPATH)));
+		assertTrue(disabled);
+		
+		WaitCommon.waitForElementVisible(driver, By.id(SelfRegConsoleObjects.STREET_ID));
+		driver.findElement(By.id(SelfRegConsoleObjects.STREET_ID)).clear();
+		driver.findElement(By.id(SelfRegConsoleObjects.STREET_ID)).sendKeys(street);
+
+		WaitCommon.sleep(2000);
+
+		WaitCommon.waitForElementVisible(driver, By.id(SelfRegConsoleObjects.PHONE_ID));
+		driver.findElement(By.id(SelfRegConsoleObjects.PHONE_ID)).clear();
+		driver.findElement(By.id(SelfRegConsoleObjects.PHONE_ID)).sendKeys(phone);
+
+		WaitCommon.sleep(2000);
+
+		WaitCommon.waitForElementVisible(driver, By.id(SelfRegConsoleObjects.EMAIL_ID));
+		driver.findElement(By.id(SelfRegConsoleObjects.EMAIL_ID)).clear();
+		driver.findElement(By.id(SelfRegConsoleObjects.EMAIL_ID)).sendKeys(email);
+
+		WaitCommon.sleep(2000);
+
+		WaitCommon.waitForElementVisible(driver, By.id(SelfRegConsoleObjects.ZIPCODE_ID));
+		driver.findElement(By.id(SelfRegConsoleObjects.ZIPCODE_ID)).clear();
+		driver.findElement(By.id(SelfRegConsoleObjects.ZIPCODE_ID)).sendKeys(zipcode);
+
+		WaitCommon.sleep(2000);
+
+		disabled = (boolean) ((JavascriptExecutor) driver).executeScript("return arguments[0].hasAttribute(\"disabled\");", driver.findElement(By.xpath(SelfRegConsoleObjects.BTNNEXT_XPATH)));
+		assertTrue(disabled);
+		
+		WaitCommon.waitForElementVisible(driver, By.xpath(SelfRegConsoleObjects.RACE_XPATH));
+		driver.findElement(By.xpath(SelfRegConsoleObjects.RACE_XPATH)).click();
+		driver.findElement(By.xpath(SelfRegConsoleObjects.RACESEL_XPATH)).click();
+
+		WaitCommon.sleep(3000);
+
+		WaitCommon.waitForElementVisible(driver, By.xpath(SelfRegConsoleObjects.GENDER_XPATH));
+		driver.findElement(By.xpath(SelfRegConsoleObjects.GENDER_XPATH)).click();
+		driver.findElement(By.xpath(SelfRegConsoleObjects.GENDERSEL_XPATH)).click();
+
+		WaitCommon.sleep(3000);
+
+		WaitCommon.waitForElementVisible(driver, By.xpath(SelfRegConsoleObjects.ETHINICITY_XPATH));
+		driver.findElement(By.xpath(SelfRegConsoleObjects.ETHINICITY_XPATH)).click();
+		driver.findElement(By.xpath(SelfRegConsoleObjects.ETHINICITYSEL_XPATH)).click();
+
+		WaitCommon.sleep(3000);
+
+		WaitCommon.waitForElementVisible(driver, By.xpath(SelfRegConsoleObjects.STATE_XPATH));
+		driver.findElement(By.xpath(SelfRegConsoleObjects.STATE_XPATH)).click();
+		driver.findElement(By.xpath(SelfRegConsoleObjects.STATESEL_XPATH)).click();
+		
+		WaitCommon.sleep(3000);
+		
+		
+		File uploadphotoImg = new File("src/main/resources/testdata/photoID.jpg");
+		driver.findElement(By.xpath(SelfRegConsoleObjects.ADDPHOTO_XPATH)).sendKeys(uploadphotoImg.getAbsolutePath());
+
+		WaitCommon.sleep(3000);
+		
+		WaitCommon.waitForElementVisible(driver, By.xpath(SelfRegConsoleObjects.BTNNEXT_XPATH));
+		assertTrue(driver.findElement(By.xpath(SelfRegConsoleObjects.BTNNEXT_XPATH)).isDisplayed());
+		driver.findElement(By.xpath(SelfRegConsoleObjects.BTNNEXT_XPATH)).click();
+		
+		WaitCommon.sleep(3000);
+		
+		assertTrue(driver.findElement(By.id(SelfRegConsoleObjects.SECADDRES_ID)).isDisplayed());
+		
+		WaitCommon.waitForElementVisible(driver, By.xpath(SelfRegConsoleObjects.BTN_PRESEC_XPATH));
+		assertTrue(driver.findElement(By.xpath(SelfRegConsoleObjects.BTN_PRESEC_XPATH)).isDisplayed());
+		driver.findElement(By.xpath(SelfRegConsoleObjects.BTN_PRESEC_XPATH)).click();
+		
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.FNAME_ID)).getAttribute("value"), fname);
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.LNAME_ID)).getAttribute("value"), lname);
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.DOB_ID)).getAttribute("value"), "06/10/1990");
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.CITY_ID)).getAttribute("value"), city);
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.STREET_ID)).getAttribute("value"),street);
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.PHONE_ID)).getAttribute("value"),phone);
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.EMAIL_ID)).getAttribute("value"),email);
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.ZIPCODE_ID)).getAttribute("value"),zipcode);
+
+		
+		
+		
+		
+		WaitCommon.waitForElementVisible(driver, By.xpath(SelfRegConsoleObjects.BTNNEXT_XPATH));
+		assertTrue(driver.findElement(By.xpath(SelfRegConsoleObjects.BTNNEXT_XPATH)).isDisplayed());
+		driver.findElement(By.xpath(SelfRegConsoleObjects.BTNNEXT_XPATH)).click();
+		
+		WaitCommon.sleep(3000);
+		
+		WaitCommon.waitForElementVisible(driver, By.id(SelfRegConsoleObjects.SECADDRES_ID));
+		driver.findElement(By.id(SelfRegConsoleObjects.SECADDRES_ID)).clear();
+		driver.findElement(By.id(SelfRegConsoleObjects.SECADDRES_ID)).sendKeys(secstreet);
+		
+		WaitCommon.sleep(2000);
+		
+		WaitCommon.waitForElementVisible(driver, By.id(SelfRegConsoleObjects.SECCITY_ID));
+		driver.findElement(By.id(SelfRegConsoleObjects.SECCITY_ID)).clear();
+		driver.findElement(By.id(SelfRegConsoleObjects.SECCITY_ID)).sendKeys(seccity);
+		
+		WaitCommon.sleep(2000);
+		WaitCommon.waitForElementVisible(driver, By.id(SelfRegConsoleObjects.SECZIP_ID));
+		driver.findElement(By.id(SelfRegConsoleObjects.SECZIP_ID)).clear();
+		driver.findElement(By.id(SelfRegConsoleObjects.SECZIP_ID)).sendKeys(seczip);
+		
+		WaitCommon.sleep(3000);
+		
+		WaitCommon.waitForElementClickable(driver, By.xpath(SelfRegConsoleObjects.SECSTATE_XPATH));
+		driver.findElement(By.xpath(SelfRegConsoleObjects.SECSTATE_XPATH)).click();
+		driver.findElement(By.xpath(SelfRegConsoleObjects.SELECTEDSTATESEC_XPATH)).click();
+		
+		
+		WaitCommon.sleep(2000);
+		
+		WaitCommon.waitForElementVisible(driver, By.xpath(SelfRegConsoleObjects.BTN_NEXTSEC_XPATH));
+		assertTrue(driver.findElement(By.xpath(SelfRegConsoleObjects.BTN_NEXTSEC_XPATH)).isDisplayed());
+		driver.findElement(By.xpath(SelfRegConsoleObjects.BTN_NEXTSEC_XPATH)).click();
+		
+		WaitCommon.sleep(3000);
+		
+		
+		WaitCommon.waitForElementVisible(driver, By.id(SelfRegConsoleObjects.INSCARRIER_ID));
+		driver.findElement(By.id(SelfRegConsoleObjects.INSCARRIER_ID)).clear();
+		driver.findElement(By.id(SelfRegConsoleObjects.INSCARRIER_ID)).sendKeys(insurName);
+		
+		WaitCommon.sleep(3000);
+		
+		WaitCommon.waitForElementVisible(driver, By.id(SelfRegConsoleObjects.MEMBERPOLICY_ID));
+		driver.findElement(By.id(SelfRegConsoleObjects.MEMBERPOLICY_ID)).clear();
+		driver.findElement(By.id(SelfRegConsoleObjects.MEMBERPOLICY_ID)).sendKeys(memID);
+		
+		WaitCommon.sleep(3000);
+		
+		boolean disabledBtn2 = (boolean) ((JavascriptExecutor) driver).executeScript("return arguments[0].hasAttribute(\"disabled\");", driver.findElement(By.xpath(SelfRegConsoleObjects.BTNNEXT2_XPATH)));
+		assertTrue(disabledBtn2);
+		
+		
+		WaitCommon.waitForElementVisible(driver, By.id(SelfRegConsoleObjects.GROUPNUM_ID));
+		driver.findElement(By.id(SelfRegConsoleObjects.GROUPNUM_ID)).clear();
+		driver.findElement(By.id(SelfRegConsoleObjects.GROUPNUM_ID)).sendKeys(groupNo);
+		
+		WaitCommon.sleep(3000);
+		
+		WaitCommon.waitForElementVisible(driver, By.xpath(SelfRegConsoleObjects.INSURANCETYPE_XPATH));
+		driver.findElement(By.xpath(SelfRegConsoleObjects.INSURANCETYPE_XPATH)).click();
+		WaitCommon.sleep(2000);
+		
+		assertTrue(driver.findElement(By.xpath(SelfRegConsoleObjects.PRIVATE_XPATH)).isDisplayed());
+		assertTrue(driver.findElement(By.xpath(SelfRegConsoleObjects.MEDICARE_XPATH)).isDisplayed());
+		assertTrue(driver.findElement(By.xpath(SelfRegConsoleObjects.NOINSR_XPATH)).isDisplayed());
+		driver.findElement(By.xpath(SelfRegConsoleObjects.INSURANCETYPESEL_XPATH)).click();
+		
+		WaitCommon.sleep(3000);
+		
+		WaitCommon.waitForElementVisible(driver, By.xpath(SelfRegConsoleObjects.INSRRELATION_XPATH));
+		driver.findElement(By.xpath(SelfRegConsoleObjects.INSRRELATION_XPATH)).click();
+		driver.findElement(By.xpath(SelfRegConsoleObjects.INSRRELATIONSEL_XPATH)).click();
+		
+		WaitCommon.sleep(3000);
+		
+		disabledBtn2 = (boolean) ((JavascriptExecutor) driver).executeScript("return arguments[0].hasAttribute(\"disabled\");", driver.findElement(By.xpath(SelfRegConsoleObjects.BTNNEXT2_XPATH)));
+		assertTrue(disabledBtn2);
+		
+		
+		WaitCommon.waitForElementVisible(driver, By.id(SelfRegConsoleObjects.INSOTHER_ID));
+		driver.findElement(By.id(SelfRegConsoleObjects.INSOTHER_ID)).clear();
+		driver.findElement(By.id(SelfRegConsoleObjects.INSOTHER_ID)).sendKeys(otherinsr);
+
+		WaitCommon.sleep(3000);
+		
+		WaitCommon.waitForElementVisible(driver, By.id(SelfRegConsoleObjects.INSHOLDER_ID));
+		driver.findElement(By.id(SelfRegConsoleObjects.INSHOLDER_ID)).clear();
+		driver.findElement(By.id(SelfRegConsoleObjects.INSHOLDER_ID)).sendKeys("TestHolder");
+		
+		WaitCommon.sleep(2000);
+		
+		WaitCommon.waitForElementVisible(driver, By.id(SelfRegConsoleObjects.DOB_ID));
+		driver.findElement(By.id(SelfRegConsoleObjects.DOB_ID)).clear();
+		((JavascriptExecutor) driver).executeScript("arguments[0].removeAttribute('readonly','readonly')", driver.findElement(By.id(SelfRegConsoleObjects.DOB_ID)));
+		driver.findElement(By.id(SelfRegConsoleObjects.DOB_ID)).sendKeys("02/10/2020");
+	
+
+		WaitCommon.sleep(2000);
+		
+		disabledBtn2 = (boolean) ((JavascriptExecutor) driver).executeScript("return arguments[0].hasAttribute(\"disabled\");", driver.findElement(By.xpath(SelfRegConsoleObjects.BTNNEXT2_XPATH)));
+		assertTrue(!disabledBtn2);
+		
+		File uploadCardImg = new File("src/main/resources/testdata/card.jpg");
+		driver.findElement(By.xpath(SelfRegConsoleObjects.INSCARD_XPATH)).sendKeys(uploadCardImg.getAbsolutePath());
+		
+		WaitCommon.sleep(3000);
+		
+		WaitCommon.waitForElementVisible(driver, By.xpath(SelfRegConsoleObjects.BTNNEXT2_XPATH));
+		assertTrue(driver.findElement(By.xpath(SelfRegConsoleObjects.BTNNEXT2_XPATH)).isDisplayed());
+		driver.findElement(By.xpath(SelfRegConsoleObjects.BTNNEXT2_XPATH)).click();
+		
+		WaitCommon.sleep(3000);
+		
+		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+		
+		WaitCommon.waitForElementVisible(driver, By.xpath(SelfRegConsoleObjects.BTNSECPRE3_XPATH));
+		assertTrue(driver.findElement(By.xpath(SelfRegConsoleObjects.BTNSECPRE3_XPATH)).isDisplayed());
+		driver.findElement(By.xpath(SelfRegConsoleObjects.BTNSECPRE3_XPATH)).click();
+		
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.INSCARRIER_ID)).getAttribute("value"), insurName);
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.GROUPNUM_ID)).getAttribute("value"), groupNo);
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.MEMBERPOLICY_ID)).getAttribute("value"), memID);
+		
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.INSHOLDER_ID)).getAttribute("value"),"TestHolder");
+		
+		WaitCommon.waitForElementVisible(driver, By.xpath(SelfRegConsoleObjects.BTNPRE2_XPATH));
+		assertTrue(driver.findElement(By.xpath(SelfRegConsoleObjects.BTNPRE2_XPATH)).isDisplayed());
+		driver.findElement(By.xpath(SelfRegConsoleObjects.BTNPRE2_XPATH)).click();
+		
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.SECADDRES_ID)).getAttribute("value"), secstreet);
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.SECCITY_ID)).getAttribute("value"), seccity);
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.SECZIP_ID)).getAttribute("value"), seczip);
+		
+		WaitCommon.sleep(3000);
+		
+		WaitCommon.waitForElementVisible(driver, By.xpath(SelfRegConsoleObjects.BTN_PRESEC_XPATH));
+		assertTrue(driver.findElement(By.xpath(SelfRegConsoleObjects.BTN_PRESEC_XPATH)).isDisplayed());
+		driver.findElement(By.xpath(SelfRegConsoleObjects.BTN_PRESEC_XPATH)).click();
+		
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.FNAME_ID)).getAttribute("value"), fname);
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.LNAME_ID)).getAttribute("value"), lname);
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.DOB_ID)).getAttribute("value"), "06/10/1990");
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.CITY_ID)).getAttribute("value"), city);
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.STREET_ID)).getAttribute("value"),street);
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.PHONE_ID)).getAttribute("value"),phone);
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.EMAIL_ID)).getAttribute("value"),email);
+		assertEquals(driver.findElement(By.id(SelfRegConsoleObjects.ZIPCODE_ID)).getAttribute("value"),zipcode);
+
+		
+		WaitCommon.waitForElementVisible(driver, By.xpath(SelfRegConsoleObjects.BTNNEXT_XPATH));
+		assertTrue(driver.findElement(By.xpath(SelfRegConsoleObjects.BTNNEXT_XPATH)).isDisplayed());
+		driver.findElement(By.xpath(SelfRegConsoleObjects.BTNNEXT_XPATH)).click();
+		
+		WaitCommon.sleep(3000);
+		
+		WaitCommon.waitForElementVisible(driver, By.xpath(SelfRegConsoleObjects.BTN_NEXTSEC_XPATH));
+		assertTrue(driver.findElement(By.xpath(SelfRegConsoleObjects.BTN_NEXTSEC_XPATH)).isDisplayed());
+		driver.findElement(By.xpath(SelfRegConsoleObjects.BTN_NEXTSEC_XPATH)).click();
+		
+		WaitCommon.sleep(3000);
+		
+		WaitCommon.waitForElementVisible(driver, By.xpath(SelfRegConsoleObjects.BTNNEXT2_XPATH));
+		assertTrue(driver.findElement(By.xpath(SelfRegConsoleObjects.BTNNEXT2_XPATH)).isDisplayed());
+		driver.findElement(By.xpath(SelfRegConsoleObjects.BTNNEXT2_XPATH)).click();
+		
+		WaitCommon.sleep(3000);
+		
+		
+		WebElement lblNameVal = driver.findElement(By.xpath(SelfRegConsoleObjects.NAMELABEL_XPATH));
+		assertEquals(lblNameVal.getText(), fname + " " + lname);
+
+		WebElement lblGenderVal = driver.findElement(By.xpath(SelfRegConsoleObjects.GENDERLABEL_XPATH));
+		assertEquals(lblGenderVal.getText(), "Female");
+
+		WebElement lblPhoneVal = driver.findElement(By.xpath(SelfRegConsoleObjects.PHONELABEL_XPATH));
+
+		assertEquals(lblPhoneVal.getText(), phone);
+
+		WebElement lblEmailVal = driver.findElement(By.xpath(SelfRegConsoleObjects.EMAILLABEL_XPATH));
+
+		assertEquals(lblEmailVal.getText(), email);
+
+		WebElement lblDOBVal = driver.findElement(By.xpath(SelfRegConsoleObjects.DOBLABEL_XPATH));
+
+		assertEquals(lblDOBVal.getText(), "06/10/1990");
+
+		WebElement lblMemIDVal = driver.findElement(By.xpath(SelfRegConsoleObjects.MEMIDLABEL_XPATH));
+
+		assertEquals(lblMemIDVal.getText(), memID);
+
+		WebElement lblGrpNoVal = driver.findElement(By.xpath(SelfRegConsoleObjects.GROUPIDLABEL_XPATH));
+
+		assertEquals(lblGrpNoVal.getText(), groupNo);
+
+		WebElement lblOtherInsrVal = driver.findElement(By.xpath(SelfRegConsoleObjects.OTHERINSRLABEL_XPATH));
+
+		assertEquals(lblOtherInsrVal.getText(), otherinsr);
+
+		WebElement lblRElationInsrVal = driver.findElement(By.xpath(SelfRegConsoleObjects.RELATIONINSRLABEL_XPATH));
+
+		assertEquals(lblRElationInsrVal.getText(), "Self");
+
+		WebElement lblInsrTypeVal = driver.findElement(By.xpath(SelfRegConsoleObjects.INSRTYPELABEL_XPATH));
+
+		assertEquals(lblInsrTypeVal.getText(), "Medicaid/Medical Assistance");
+
+		WebElement lblInsrCompVal = driver.findElement(By.xpath(SelfRegConsoleObjects.INSRCOMPLABEL_XPATH));
+
+		assertEquals(lblInsrCompVal.getText(), insurName);
+
+		WebElement lblAddresVal = driver.findElement(By.xpath(SelfRegConsoleObjects.ADDRESSLABEL_XPATH));
+
+		assertTrue(lblAddresVal.getText().contains(street + " " + city));
+		
+		
+		WaitCommon.sleep(3000);
+		WaitCommon.waitForElementVisible(driver, By.xpath(SelfRegConsoleObjects.BTNSECREGISTER_XPATH));
+		assertTrue(driver.findElement(By.xpath(SelfRegConsoleObjects.BTNSECREGISTER_XPATH)).isDisplayed());
+		driver.findElement(By.xpath(SelfRegConsoleObjects.BTNSECREGISTER_XPATH)).click();
+		
+
+		
+		
+		
+		
+	}
+}

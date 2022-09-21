@@ -1,0 +1,116 @@
+
+package com.internal.base;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeDriverService;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxDriverLogLevel;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.GeckoDriverService;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerDriverService;
+import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.safari.SafariOptions;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Parameters;
+
+import com.internal.automationreport.AutomationReport;
+import com.internal.util.StringConstants;
+import com.internal.util.TestUtil;
+
+@Listeners(AutomationReport.class)
+public class TestBase {
+	public long timeOutInSeconds = 10;
+
+	public WebDriver driver;
+	TestUtil testutil = new TestUtil();
+
+	@BeforeClass(alwaysRun = true)
+	@Parameters({ "deviceName", "platformName", "platformVersion", "udid", "browserName", "browserVersion", "nodeIP",
+			"nodePort" })
+	public void SetUp(String deviceName, String platformName, String platformVersion, String udid, String browserName,
+			String browserVersion, String nodeIP, String nodePort) throws IOException, InterruptedException {
+		try {
+			if (browserName == null || browserName.equals("")) {
+				System.out.println("Browser name missing." + "\n" + "Execution stopped...");
+				System.exit(0);
+			}
+			if (browserName.equalsIgnoreCase(("firefox"))) {
+				FirefoxOptions options = new FirefoxOptions();
+				options.addArguments("--test-type");
+				options.setLogLevel(FirefoxDriverLogLevel.DEBUG);
+				GeckoDriverService geckodriverservice = new GeckoDriverService.Builder()
+						.usingDriverExecutable(new File("")).usingAnyFreePort().build();
+				driver = new FirefoxDriver(geckodriverservice, options);
+			} else if (browserName.equalsIgnoreCase(("chrome"))) {
+				String chromeDriver = testutil.getProperty(StringConstants.CONFIG_PROPERTY_FILE,
+						StringConstants.CHROME_DRIVER_PATH);
+
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("--test-type");
+
+				Map<String, Object> prefs = new HashMap<String, Object>();
+				prefs.put("credentials_enable_service", false);
+				prefs.put("profile.password_manager_enabled", false);
+				options.setExperimentalOption("prefs", prefs);
+				// options.addArguments("headless");
+
+				ChromeDriverService chromeservices = new ChromeDriverService.Builder()
+						.usingDriverExecutable(new File(chromeDriver)).usingAnyFreePort().build();
+				driver = new ChromeDriver(chromeservices, options);
+
+			} else if (browserName.equalsIgnoreCase(("IE")) || browserName.equalsIgnoreCase("Internet Explorer")) {
+				InternetExplorerDriverService service = new InternetExplorerDriverService.Builder()
+						.usingDriverExecutable(new File("")).usingAnyFreePort().build();
+				driver = new InternetExplorerDriver(service);
+
+			} else if (browserName.equalsIgnoreCase(("Safari"))) {
+				String operatingSystemcheck = System.getProperty("os.name");
+				if (operatingSystemcheck.contains("MAC")) {
+					Process process;
+					try {
+						process = Runtime.getRuntime().exec("killall safaridriver");
+						process.waitFor();
+						process.destroy();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					SafariOptions options = new SafariOptions();
+					options.useCleanSession(true);
+					driver = new SafariDriver(options);
+					driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+				}
+			} else if (browserName.equalsIgnoreCase(("Edge"))) {
+				EdgeDriverService edgeservice = new EdgeDriverService.Builder().usingDriverExecutable(new File(""))
+						.build();
+				driver = new EdgeDriver(edgeservice);
+			} else {
+				System.out.println("Browser name missing");
+			}
+
+			driver.get("https://lpserverstage3.orig3n.com/internal/");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@AfterSuite(alwaysRun = true)
+	public void tearAfter() throws Exception {
+	//	driver.quit();
+	}
+
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.openqa.selenium.WebDriver"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.chrome.ChromeDriver"/>
+<fullyQualifiedTypeName name="java.sql.Driver"/>
+<fullyQualifiedTypeName name="com.internal.objectrepository.CustomerPageObjects"/>
+<fullyQualifiedTypeName name="com.internal.pages.CustomerPage"/>
+<fullyQualifiedTypeName name="com.internal.objectrepository.PgvPageObjects"/>
+<fullyQualifiedTypeName name="com.internal.base.TestBase"/>
+<fullyQualifiedTypeName name="com.internal.pages.PgvPage"/>
+<fullyQualifiedTypeName name="com.internal.objectrepository.PGVPageObjects"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.By"/>
+<fullyQualifiedTypeName name="org.testng.annotations.Test"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="objectrepository.CreateProduct"/>
+<fullyQualifiedTypeName name="objectrepository.CreateInternalUser"/>
+<fullyQualifiedTypeName name="org.apache.poi.xssf.usermodel.XSSFWorkbook"/>
+<fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="org.apache.poi.xssf.usermodel.XSSFSheet"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="org.apache.poi.ss.usermodel.Row"/>
+<fullyQualifiedTypeName name="org.apache.poi.ss.usermodel.Cell"/>
+<fullyQualifiedTypeName name="org.apache.poi.ss.usermodel.CellType"/>
+<fullyQualifiedTypeName name="org.apache.poi.ss.util.NumberToTextConverter"/>
+<fullyQualifiedTypeName name="datadriven.LoginData"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.excel.utility.ExcelData"/>
+<fullyQualifiedTypeName name="sapphiros.Base"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.Keys"/>
+<fullyQualifiedTypeName name="java.net.URLEncoder"/>
+</qualifiedTypeNameHistroy>
